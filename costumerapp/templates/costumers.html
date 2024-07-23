@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Список клиентов</h1>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr class="table-info">
+            <th>Логин</th>
+            <th>Имя</th>
+            <th>Возраст</th>
+            <th>Пол</th>
+            <th>Соц-сети</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for costumer in costumer_list %}
+            <tr>
+                <td>{{ costumer.user }}</td>
+                <td>{{ costumer }}</td>
+                <td>{{ costumer.age }}</td>
+                <td>{{ costumer.gender }}</td>
+                <td>{{ costumer.profile.social_link }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

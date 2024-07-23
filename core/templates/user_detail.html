@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+
+<h1>Профиль пользователя</h1>
+<div>Логин: {{ user }}</div>
+<div>Имя: {{ user.first_name }}</div>
+<div> Является ли сотрудником: {{ user.is_staff }}</div>
+<div>Почта: {{ user.email }}</div>
+
+{% endblock %}
