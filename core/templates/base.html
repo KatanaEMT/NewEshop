@@ -12,6 +12,9 @@
 </head>
 <body>
     <nav>
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'logo.png' %}" height="40px" alt="">
+        </a>
         <a href="/">Главная</a>
         <a href="{% url 'product-create' %}">Добавить</a>
         <a href="/costumers/">Покупатели</a>
@@ -44,6 +47,93 @@
     <!-- /static/code.js -->
     <script src="{% static 'code.js' %}"></script>
 </body>
+<!--<div class="row">-->
+<!--  <div class="col-md-8">-->
+<!--    &lt;!&ndash; Spied element &ndash;&gt;-->
+<!--    <div-->
+<!--      data-mdb-scrollspy-init-->
+<!--      data-mdb-target="#scrollspy1"-->
+<!--      data-mdb-offset="0"-->
+<!--      class="scrollspy-example"-->
+<!--    >-->
+<!--      <section id="example-1">-->
+<!--        <h3>Section 1</h3>-->
+<!--        ...-->
+<!--      </section>-->
+<!--      <section id="example-2">-->
+<!--        <h3>Section 2</h3>-->
+<!--        ...-->
+<!--      </section>-->
+<!--      <section id="example-3">-->
+<!--        <h3>Section 3</h3>-->
+<!--        ...-->
+<!--        <section id="example-sub-A">-->
+<!--          <h3>Subsection A</h3>-->
+<!--          ...-->
+<!--        </section>-->
+<!--        <section id="example-sub-B">-->
+<!--          <h3>Subsection B</h3>-->
+<!--          ...-->
+<!--        </section>-->
+<!--      </section>-->
+<!--      <section id="example-4">-->
+<!--        <h3>Section 4</h3>-->
+<!--        ...-->
+<!--      </section>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Spied element &ndash;&gt;-->
+<!--  </div>-->
+
+<!--  <div class="col-md-4">-->
+<!--    &lt;!&ndash; Scrollspy &ndash;&gt;-->
+<!--    <div id="scrollspy1" class="sticky-top">-->
+<!--      <ul class="nav flex-column nav-pills menu-sidebar">-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" href="#example-1">Section 1</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" href="#example-2">Section 2</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" href="#example-3">Section 3</a>-->
+<!--          <ul class="nav flex-column ps-3">-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#example-sub-A">Subsection A</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#example-sub-B">Subsection B</a>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" href="#example-4">Section 4</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Scrollspy &ndash;&gt;-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+
+<!--<a href="/">Главная</a>-->
+<!--        <a href="{% url 'product-create' %}">Добавить</a>-->
+<!--        <a href="/costumers/">Покупатели</a>-->
+<!--        <a href="{% url 'news-list' %}">Новости</a>-->
+<!--        <a href="{% url 'new-create' %}">Добавить новость</a>-->
+<!--        <a href="{% url 'profile-create' %}">Добавить профиль</a>-->
+<!--        <a href="/admin/">Админка</a>-->
+<!--        <form action="/search/" method="GET">-->
+<!--            <input type="text" name="keyword">-->
+<!--            <button>Поиск</button>-->
+<!--        </form>-->
+<!--    </nav>-->
+
 <!--</html>-->
 <!--        <a href="/">Главная</a>-->
 <!--        <a href="/costumers/">Покупатели</a>-->
@@ -56,103 +146,4 @@
 <!--        <a href="{% url 'profile-create' %}">Добавить профиль</a>-->
 <!--        <a href="/admin/">Админка</a>-->
 
-<!--{#<!DOCTYPE html>#}-->
-<!--{#<html lang="en">#}-->
-<!--{#<head>#}-->
-<!--{#    <meta charset="utf-8" />#}-->
-<!--{#    <meta name="viewport" content="width=device-width" />#}-->
-<!--{#    <link rel="stylesheet" href=#}-->
-<!--{#"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />#}-->
-<!--{#    <script src=#}-->
-<!--{#"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">#}-->
-<!--{#    </script>#}-->
-<!--{#    <script src=#}-->
-<!--{#"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">#}-->
-<!--{#    </script>#}-->
-<!--{#    <style>#}-->
-<!--{#        body {#}-->
-<!--{#            position: relative;#}-->
-<!--{#        }#}-->
-<!--{#        .navbar-brand {#}-->
-<!--{#            position: fixed;#}-->
-<!--{#        }#}-->
-<!--{#        ul.nav-pills {#}-->
-<!--{#            top: 40px;#}-->
-<!--{#            position: fixed;#}-->
-<!--{#        }#}-->
-<!--{#        div.col-sm-9 div {#}-->
-<!--{#            height: 500px;#}-->
-<!--{#        }#}-->
-<!--{#        #java {#}-->
-<!--{#            background: lightblue;#}-->
-<!--{#        }#}-->
-<!--{#        #cpp {#}-->
-<!--{#            background: lightgreen;#}-->
-<!--{#        }#}-->
-<!--{#        #dsa {#}-->
-<!--{#            background: #ffcc66;#}-->
-<!--{#        }#}-->
-<!--{#        @media screen and (max-width: 810px) {#}-->
-<!--{#            #java,#}-->
-<!--{#            #cpp,#}-->
-<!--{#            #dsa {#}-->
-<!--{#                margin-left: 150px;#}-->
-<!--{#            }#}-->
-<!--{#        }#}-->
-<!--{#    </style>#}-->
-<!--{#</head>#}-->
-<!--{#<body data-spy="scroll">#}-->
-<!--{#    <div class="container">#}-->
-<!--{#        <div class="row">#}-->
-<!--{#            <nav class="navbar col-sm-3">#}-->
-<!--{#                <a class="navbar-brand">GeeksforGeeks</a>#}-->
-<!--{#                <ul class="nav nav-pills nav-stacked">#}-->
-<!--{#                    <li class="nav-item">#}-->
-<!--{#                        <a class="nav-link" href="#java">Java</a>#}-->
-<!--{#                    </li>#}-->
-<!--{#                    <li class="nav-item">#}-->
-<!--{#                        <a class="nav-link" href="#cpp">C++</a>#}-->
-<!--{#                    </li>#}-->
-<!--{#                    <li class="nav-item">#}-->
-<!--{#                        <a class="nav-link" href="#dsa">DSA</a>#}-->
-<!--{#                    </li>#}-->
-<!--{#                </ul>#}-->
-<!--{#            </nav>#}-->
-<!--{#            <div class="col-sm-9">#}-->
-<!--{#                <div id="java">#}-->
-<!--{#                    <h4>Java</h4>#}-->
-<!--{#                    <p>#}-->
-<!--{#                        Java is a OOP programming language#}-->
-<!--{#                        and GeeksforGeeks has great#}-->
-<!--{#                        articles on it.#}-->
-<!--{#                    </p>#}-->
-<!--{#                </div>#}-->
-<!--{#                <div id="cpp">#}-->
-<!--{#                    <h4>C++</h4>#}-->
-<!--{#                    <p>#}-->
-<!--{#                        C++ is a very popular programming#}-->
-<!--{#                        language used by many developers#}-->
-<!--{#                        and programmers around the world.#}-->
-<!--{#                        It has wide range of applications#}-->
-<!--{#                        from software to backend. I have#}-->
-<!--{#                        learned C++ mostly from GeeksforGeeks#}-->
-<!--{#                        because of the great content."#}-->
-<!--{#                    </p>#}-->
-<!--{#                </div>#}-->
-<!--{#                <div id="dsa">#}-->
-<!--{#                    <h4>DSA</h4>#}-->
-<!--{#                    <p>#}-->
-<!--{#                        DSA or Data Structures and Algorithms are#}-->
-<!--{#                        the most important aspects of programming#}-->
-<!--{#                        and every good programmer should know DSA#}-->
-<!--{#                        for better and efficient algorithms irrespective#}-->
-<!--{#                        of programming language. You can find tons of#}-->
-<!--{#                        lessons for DSA in GeeksforGeeks.#}-->
-<!--{#                    </p>#}-->
-<!--{#                </div>#}-->
-<!--{#            </div>#}-->
-<!--{#        </div>#}-->
-<!--{#    </div>#}-->
-<!--{#</body>#}-->
-<!--{#</html>#}-->
 

@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 from .models import *
 from costumerapp.models import *
 from django.contrib.auth.models import User
+from django.db.models import Q
 from .forms import ProductForm
 from .filters import ProductFilter
 
@@ -87,7 +88,10 @@ def product_create(request):
 def search(request):
     keyword = request.GET["keyword"]
     # LIKE
-    products = Product.objects.filter(name__icontains=keyword)
+    products = Product.objects.filter(
+        Q(name__icontains=keyword) |
+        Q(category__name__icontains=keyword)
+    )
     context = {"products": products}
     return render(request, 'search_result.html', context)
 
