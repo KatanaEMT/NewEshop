@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 
 {% block content %}
 
@@ -9,6 +10,12 @@
 <div>Название натегории: {{ product.category.name }}</div>
 <div>Описание категории: {{ product.category.description }}</div>
 <div>Просмотров: {{ product.views_qty }}</div>
+{% if product.costumer_views %}
 <div>Уникальные просмотры:  {{ product.costumer_views.count }}</div>
+    {% if product.photo %}
+<img src="/media/{{ product.photo }}" alt="" height="250px">
+    {% endif %}
+    <a class="btn btn-warning" href="{% url 'product-update' product.id %}">Изменить</a>
+{% endif %}
 
 {% endblock %}

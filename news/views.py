@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import New
 from .news_forms import NewsForm
 from .news_filters import NewsFilter
+from django.contrib import messages
+
 
 
 def news_list(request):
@@ -47,6 +49,7 @@ def new_create(request):
             title=title,
             article=text,
         )
+        messages.success(request, "Вы успешно создали новость")
         return redirect(f'/news-detail/{new_object.id}/')
 
 

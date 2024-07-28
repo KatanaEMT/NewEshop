@@ -1,5 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .models import Costumer, Profile
+from core.forms import ProfileForm
+from django.contrib import messages
+
 
 
 def costumer_view(request):
@@ -40,21 +43,36 @@ def costumers_create(request):
             gender=gender,
             # user=user
         )
+        messages.success(request, "Профиль покупателя успешно создан!")
         return redirect(f'/costumers/')
 
 
 def profile_create(request):
-    if request.method == "GET":
-        return render(request, 'profile_create.html')
-    elif request.method == "POST":
-        data = request.POST
-        bio = data["new_bio"]
-        social_link = data["new_social_link"]
-        phone_number = data["new_phone_number"]
+    context = {}
+    context["profile_form"] = ProfileForm()
 
-        new_object = Profile.objects.create(
-            bio=bio,
-            social_link=social_link,
-            phone_number=phone_number,
-        )
-        return redirect(f'/profile/{new_object.id}/')
+    if request.method == "GET":
+        return render(request, 'profile_create.html', context)
+    if request.method == "POST":
+        profile_form = ProfileForm(request.POST, request.FILES)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, "Вы успешно создали профиль")
+            return redirect('/')
+        return HttpResponse("Ошибка валидации!")
+
+
+def profile_update(request, id):
+    context = {}
+    profile_object = Profile.objects.get(id=id)
+    context["profile_form"] = ProfileForm(instance=profile_object)
+
+    if request.method == "GET":
+        return render(request, 'profile/update.html', context)
+    if request.method == "POST":
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile_object)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, "Профиль обновлен")
+            return redirect('/')
+        return HttpResponse("Ошибка валидации!")

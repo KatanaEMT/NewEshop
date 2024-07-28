@@ -1,23 +1,18 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 
 {% block content %}
-<br>
-<br>
 
-<form method="POST">
-    {% csrf_token %}
-    <h2>Добавить профиль</h2>
-    <p>
-        <textarea name="new_bio" cols="30" rows="10" placeholder="Ваша автобиография"></textarea>
-    </p>
-        <input type="number" name="new_phone_number" placeholder="Номер телефона">
-    </p>
-        <input name="new_social_link" placeholder="Ваши соцсети">
-    </p>
-{#        <input name="new_user" placeholder="Логин">#}
-{#    </p>#}
-    <button>Добавить</button>
-</form>
-
+<h1>Добавить профиль</h1>
+<div class="row">
+    <div class="col-lg-6">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form profile_form %}
+            <button class="btn btn-info">Добавить</button>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
+

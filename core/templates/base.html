@@ -1,37 +1,91 @@
 <!DOCTYPE html>
 <!-- 1 -->
 {% load static %}
+{% load django_bootstrap5 %}
 <html>
 <head>
     <title>Проект eshop!</title>
     <!-- 2 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
 </head>
 <body>
-    <nav>
-        <a class="navbar-brand" href="/">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
             <img src="{% static 'logo.png' %}" height="40px" alt="">
-        </a>
-        <a href="/">Главная</a>
-        <a href="{% url 'product-create' %}">Добавить</a>
-        <a href="/costumers/">Покупатели</a>
-        <a href="{% url 'news-list' %}">Новости</a>
-        <a href="{% url 'new-create' %}">Добавить новость</a>
-        <a href="{% url 'profile-create' %}">Добавить профиль</a>
-        <a href="/admin/">Админка</a>
-        <form action="/search/" method="GET">
-            <input type="text" name="keyword">
-            <button>Поиск</button>
-        </form>
-    </nav>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Главная</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/costumers/">Покупатели</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'news-list' %}">Новости</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/">Пользователи</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Добавить</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'product-create' %}">Добавить товар</a></li>
+                  <li><a class="dropdown-item" href="{% url 'new-create' %}">Добавить новость</a></li>
+                  <li><a class="dropdown-item" href="{% url 'profile-create' %}">Добавить профиль</a></li>
+                  <li><a class="dropdown-item" href="{% url 'costumers-create' %}">Добавить профиль покупателя</a><li></li>
+                </ul>
+              </li>
+            </ul>
 
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                  <i class="bi bi-person text-primary" style="font-size: 25px"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  {% if request.user.is_authenticated %}
+                    <li>
+                      <a class="dropdown-item" href="{% url 'signout' %}">Выйти</a>
+                    </li>
+                    {% if request.user.is_staff or request.user.is_superuser %}
+                      <li>
+                        <a class="dropdown-item" href="/admin/">Админка</a>
+                      </li>
+                    {% endif %}
+                  {% else %}
+                    <li>
+                      <a class="dropdown-item" href="/registration/">Регистрация</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'signin' %}">Войти</a>
+                    </li>
+                  {% endif %}
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" action="/search/">
+              <input class="form-control me-2" type="text" placeholder="По содержание" name="keyword">
+              <button class="btn btn-primary" type="button">Поиск</button>
+          </form>
+          </div>
+        </div>
+    </nav>
     <div class="container-fluid p-5 bg-primary text-white text-center">
         <h1>Сайт eshop</h1>
         <p>Разработано в bootcamp-5 python 2024</p>
     </div>
+
+    {% bootstrap_messages %}
+
 
     <div class="container">
         {% block content %}
@@ -47,103 +101,7 @@
     <!-- /static/code.js -->
     <script src="{% static 'code.js' %}"></script>
 </body>
-<!--<div class="row">-->
-<!--  <div class="col-md-8">-->
-<!--    &lt;!&ndash; Spied element &ndash;&gt;-->
-<!--    <div-->
-<!--      data-mdb-scrollspy-init-->
-<!--      data-mdb-target="#scrollspy1"-->
-<!--      data-mdb-offset="0"-->
-<!--      class="scrollspy-example"-->
-<!--    >-->
-<!--      <section id="example-1">-->
-<!--        <h3>Section 1</h3>-->
-<!--        ...-->
-<!--      </section>-->
-<!--      <section id="example-2">-->
-<!--        <h3>Section 2</h3>-->
-<!--        ...-->
-<!--      </section>-->
-<!--      <section id="example-3">-->
-<!--        <h3>Section 3</h3>-->
-<!--        ...-->
-<!--        <section id="example-sub-A">-->
-<!--          <h3>Subsection A</h3>-->
-<!--          ...-->
-<!--        </section>-->
-<!--        <section id="example-sub-B">-->
-<!--          <h3>Subsection B</h3>-->
-<!--          ...-->
-<!--        </section>-->
-<!--      </section>-->
-<!--      <section id="example-4">-->
-<!--        <h3>Section 4</h3>-->
-<!--        ...-->
-<!--      </section>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; Spied element &ndash;&gt;-->
-<!--  </div>-->
+</html>
 
-<!--  <div class="col-md-4">-->
-<!--    &lt;!&ndash; Scrollspy &ndash;&gt;-->
-<!--    <div id="scrollspy1" class="sticky-top">-->
-<!--      <ul class="nav flex-column nav-pills menu-sidebar">-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#example-1">Section 1</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#example-2">Section 2</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#example-3">Section 3</a>-->
-<!--          <ul class="nav flex-column ps-3">-->
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link" href="#example-sub-A">Subsection A</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link" href="#example-sub-B">Subsection B</a>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#example-4">Section 4</a>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; Scrollspy &ndash;&gt;-->
-<!--  </div>-->
-<!--</div>-->
-
-
-
-
-
-
-
-
-<!--<a href="/">Главная</a>-->
-<!--        <a href="{% url 'product-create' %}">Добавить</a>-->
-<!--        <a href="/costumers/">Покупатели</a>-->
-<!--        <a href="{% url 'news-list' %}">Новости</a>-->
-<!--        <a href="{% url 'new-create' %}">Добавить новость</a>-->
-<!--        <a href="{% url 'profile-create' %}">Добавить профиль</a>-->
-<!--        <a href="/admin/">Админка</a>-->
-<!--        <form action="/search/" method="GET">-->
-<!--            <input type="text" name="keyword">-->
-<!--            <button>Поиск</button>-->
-<!--        </form>-->
-<!--    </nav>-->
-
-<!--</html>-->
-<!--        <a href="/">Главная</a>-->
-<!--        <a href="/costumers/">Покупатели</a>-->
-<!--        <a href="{% url 'product-create' %}">Добавить</a>-->
-<!--        <a href="{% url 'news-list' %}">Новости</a>-->
-<!--        <a href="/user/">Пользователи</a>-->
-<!--        <a href="{% url 'new-create' %}">Добавить новость</a>-->
-<!--        <a href="{% url 'costumers-create' %}">Добавить Пользователя</a>-->
-<!--        <a href="/profile/">Профиль пользователей</a>-->
-<!--        <a href="{% url 'profile-create' %}">Добавить профиль</a>-->
-<!--        <a href="/admin/">Админка</a>-->
 
 

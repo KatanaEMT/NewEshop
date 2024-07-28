@@ -31,6 +31,7 @@
             <th>Название</th>
             <th>Категория</th>
             <th>Кол-во</th>
+            <th>Фото</th>
             <th>Цена</th>
         </tr>
     </thead>
@@ -42,6 +43,7 @@
                 </td>
                 <td>{{ product.category }}</td>
                 <td>{{ product.qty }}</td>
+                <td><img src="/media/{{ product.photo }}" alt="" height="150px"></td>
                 <td>{{ product.price }}</td>
             </tr>
         {% endfor %}

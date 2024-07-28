@@ -9,5 +9,11 @@
 <div>Имя: {{ user.first_name }}</div>
 <div> Является ли сотрудником: {{ user.is_staff }}</div>
 <div>Почта: {{ user.email }}</div>
-
+{% if user.profile %}
+<div>Биография: {{ user.profile.bio }}</div>
+    {% if user.profile.photo %}
+<img src="/media/{{ user.profile.photo }}" alt="" height="250px">
+    {% endif %}
+    <a class="btn btn-warning" href="{% url 'profile-update' user.profile.id %}">Изменить</a>
+{% endif %}
 {% endblock %}
