@@ -36,12 +36,12 @@
                 <a class="nav-link" href="/user/">Пользователи</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Добавить</a>
+                <a id="drop-info" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Добавить</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'product-create' %}">Добавить товар</a></li>
-                  <li><a class="dropdown-item" href="{% url 'new-create' %}">Добавить новость</a></li>
-                  <li><a class="dropdown-item" href="{% url 'profile-create' %}">Добавить профиль</a></li>
-                  <li><a class="dropdown-item" href="{% url 'costumers-create' %}">Добавить профиль покупателя</a><li></li>
+                  <li><a id="btn-product" class="dropdown-item" href="{% url 'product-create' %}">Добавить товар</a></li>
+                  <li><a id="btn-news" class="dropdown-item" href="{% url 'new-create' %}">Добавить новость</a></li>
+                  <li><a id="btn-profile" class="dropdown-item" href="{% url 'profile-create' %}">Добавить профиль</a></li>
+                  <li><a id="btn-costumer" class="dropdown-item" href="{% url 'costumers-create' %}">Добавить профиль покупателя</a><li></li>
                 </ul>
               </li>
             </ul>
@@ -74,7 +74,7 @@
             </ul>
             <form class="d-flex" action="/search/">
               <input class="form-control me-2" type="text" placeholder="По содержание" name="keyword">
-              <button class="btn btn-primary" type="button">Поиск</button>
+              <button id="id_search" class="btn btn-primary" type="button">Поиск</button>
           </form>
           </div>
         </div>

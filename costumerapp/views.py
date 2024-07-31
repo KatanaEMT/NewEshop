@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, HttpResponse
 from .models import Costumer, Profile
 from core.forms import ProfileForm
 from django.contrib import messages
+from django.views.generic import DetailView
+from django.views import View
 
 
 
@@ -47,13 +49,13 @@ def costumers_create(request):
         return redirect(f'/costumers/')
 
 
-def profile_create(request):
-    context = {}
-    context["profile_form"] = ProfileForm()
-
-    if request.method == "GET":
+class ProfileCreateView(View):
+    def get(self, request):
+        context = {}
+        context["profile_form"] = ProfileForm()
         return render(request, 'profile_create.html', context)
-    if request.method == "POST":
+
+    def post(self, request):
         profile_form = ProfileForm(request.POST, request.FILES)
         if profile_form.is_valid():
             profile_form.save()
